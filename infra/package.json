@@ -1,0 +1,31 @@
+{
+  "name": "website-blog",
+  "version": "0.233.0",
+  "author": "Matteo Depascale",
+  "license": "GNU GENERAL PUBLIC LICENSE",
+  "bin": {
+    "website-blog": "infra/app.js"
+  },
+  "scripts": {
+    "build": "tsc ",
+    "watch": "tsc -w",
+    "cdk": "cdk",
+    "bootstrap": "cdk bootstrap -c config=dev",
+    "synth": "cdk synth -c config=dev",
+    "diff": "npm version patch --no-git-tag-version && npm run build && cdk diff \"*\" -c config=dev --exclusively",
+    "deploy": "npm version minor --no-git-tag-version && npm run build && cdk deploy \"*\" -c config=dev --require-approval=never --progress=events --exclusively",
+    "destroy": "cdk destroy --all -c config=dev"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.109",
+    "@types/node": "^18.11.9",
+    "esbuild": "^0.15.15",
+    "prompt": "^1.3.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.51.1",
+    "constructs": "^10.1.170"
+  }
+}
